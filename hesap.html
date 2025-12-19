@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mağaza Hesabı Oluştur - VELORA</title>
+    <link rel="stylesheet" href="hesap.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="password-phone-helper.css">
+</head>
+
+<body>
+    <!-- Top Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Velora Logo" class="logo-icon">
+                <div class="brand">
+                    <h1 class="brand-name">VELORA</h1>
+                    <p class="brand-tagline">Kadın üreticilerin dijital pazarı</p>
+                </div>
+            </div>
+            <a href="home.html" class="nav-btn">Anasayfa</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h2 class="page-title">HESAP OLUŞTURUN</h2>
+            <p class="page-subtitle">Velora'da mağazanızı açmak için işletmenize ait bilgileri eksiksiz doldurun ve
+                satışa başlamak için hesabınızı oluşturun.</p>
+
+            <div class="account-card">
+                <div class="form-section">
+                    <form action="magazam.html" method="get"> <!-- Redirects to store page -->
+                        <div class="form-group">
+                            <label for="fullname">Ad Soyad:</label>
+                            <input type="text" id="fullname" name="fullname" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-posta:</label>
+                            <input type="email" id="email" name="email" placeholder="ornek@eposta.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business-type">İşletme Türü:</label>
+                            <select id="business-type" name="business-type" required>
+                                <option value="">İşletme Türü Seçin</option>
+                                <option value="Ev Hanımı">Ev Hanımı</option>
+                                <option value="Bireysel İşletme">Bireysel İşletme</option>
+                                <option value="Kurumsal İşletme">Kurumsal İşletme</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business-name">İşletme Adı:</label>
+                            <input type="text" id="business-name" name="business-name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Ürün Kategorisi:</label>
+                            <select id="category" name="category" required>
+                                <option value="">Kategori Seçin</option>
+                                <option value="Tekstil">Tekstil</option>
+                                <option value="Dekorasyon">Dekorasyon</option>
+                                <option value="El Emeği">El Emeği</option>
+                                <option value="Diğer">Diğer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Şifre:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">Lokasyon (Şehir):</label>
+                            <select id="location" name="location" required>
+                                <option value="">Şehir Seçin</option>
+                                <option value="Adana">Adana</option>
+                                <option value="Adıyaman">Adıyaman</option>
+                                <option value="Afyonkarahisar">Afyonkarahisar</option>
+                                <option value="Ağrı">Ağrı</option>
+                                <option value="Aksaray">Aksaray</option>
+                                <option value="Amasya">Amasya</option>
+                                <option value="Ankara">Ankara</option>
+                                <option value="Antalya">Antalya</option>
+                                <option value="Ardahan">Ardahan</option>
+                                <option value="Artvin">Artvin</option>
+                                <option value="Aydın">Aydın</option>
+                                <option value="Balıkesir">Balıkesir</option>
+                                <option value="Bartın">Bartın</option>
+                                <option value="Batman">Batman</option>
+                                <option value="Bayburt">Bayburt</option>
+                                <option value="Bilecik">Bilecik</option>
+                                <option value="Bingöl">Bingöl</option>
+                                <option value="Bitlis">Bitlis</option>
+                                <option value="Bolu">Bolu</option>
+                                <option value="Burdur">Burdur</option>
+                                <option value="Bursa">Bursa</option>
+                                <option value="Çanakkale">Çanakkale</option>
+                                <option value="Çankırı">Çankırı</option>
+                                <option value="Çorum">Çorum</option>
+                                <option value="Denizli">Denizli</option>
+                                <option value="Diyarbakır">Diyarbakır</option>
+                                <option value="Düzce">Düzce</option>
+                                <option value="Edirne">Edirne</option>
+                                <option value="Elazığ">Elazığ</option>
+                                <option value="Erzincan">Erzincan</option>
+                                <option value="Erzurum">Erzurum</option>
+                                <option value="Eskişehir">Eskişehir</option>
+                                <option value="Gaziantep">Gaziantep</option>
+                                <option value="Giresun">Giresun</option>
+                                <option value="Gümüşhane">Gümüşhane</option>
+                                <option value="Hakkari">Hakkari</option>
+                                <option value="Hatay">Hatay</option>
+                                <option value="Iğdır">Iğdır</option>
+                                <option value="Isparta">Isparta</option>
+                                <option value="İstanbul">İstanbul</option>
+                                <option value="İzmir">İzmir</option>
+                                <option value="Kahramanmaraş">Kahramanmaraş</option>
+                                <option value="Karabük">Karabük</option>
+                                <option value="Karaman">Karaman</option>
+                                <option value="Kars">Kars</option>
+                                <option value="Kastamonu">Kastamonu</option>
+                                <option value="Kayseri">Kayseri</option>
+                                <option value="Kırıkkale">Kırıkkale</option>
+                                <option value="Kırklareli">Kırklareli</option>
+                                <option value="Kırşehir">Kırşehir</option>
+                                <option value="Kocaeli">Kocaeli</option>
+                                <option value="Konya">Konya</option>
+                                <option value="Kütahya">Kütahya</option>
+                                <option value="Malatya">Malatya</option>
+                                <option value="Manisa">Manisa</option>
+                                <option value="Mardin">Mardin</option>
+                                <option value="Mersin">Mersin</option>
+                                <option value="Muğla">Muğla</option>
+                                <option value="Muş">Muş</option>
+                                <option value="Nevşehir">Nevşehir</option>
+                                <option value="Niğde">Niğde</option>
+                                <option value="Ordu">Ordu</option>
+                                <option value="Rize">Rize</option>
+                                <option value="Sakarya">Sakarya</option>
+                                <option value="Samsun">Samsun</option>
+                                <option value="Siirt">Siirt</option>
+                                <option value="Sinop">Sinop</option>
+                                <option value="Sivas">Sivas</option>
+                                <option value="Şanlıurfa">Şanlıurfa</option>
+                                <option value="Şırnak">Şırnak</option>
+                                <option value="Tekirdağ">Tekirdağ</option>
+                                <option value="Tokat">Tokat</option>
+                                <option value="Trabzon">Trabzon</option>
+                                <option value="Tunceli">Tunceli</option>
+                                <option value="Uşak">Uşak</option>
+                                <option value="Van">Van</option>
+                                <option value="Yalova">Yalova</option>
+                                <option value="Yozgat">Yozgat</option>
+                                <option value="Zonguldak">Zonguldak</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn" onclick="saveAccount(event)">Hesap Oluştur</button>
+                    </form>
+                </div>
+
+                <div class="visual-section">
+                    <div class="logo-circle">
+                        <img src="logo.png" alt="Velora" class="center-logo">
+                        <span class="logo-text">VELORA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        async function saveAccount(e) {
+            e.preventDefault();
+            const inputs = document.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!input.value) isValid = false;
+            });
+
+            if (!isValid) {
+                alert('Lütfen tüm alanları doldurunuz.');
+                return;
+            }
+
+            const fullName = document.getElementById('fullname').value.trim();
+            const businessType = document.getElementById('business-type').value.trim();
+            const businessName = document.getElementById('business-name').value.trim();
+            const category = document.getElementById('category').value;
+            const city = document.getElementById('location').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value.trim();
+
+            // Önce backend'e kaydetmeyi dene, başarısız olursa local'e düş.
+            try {
+                // 1) Kullanıcı kaydı
+                const regRes = await fetch('http://localhost:5000/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: fullName,
+                        email: email,
+                        password: password,
+                        role: 'seller'
+                    })
+                });
+                const regData = await regRes.json();
+                if (!regRes.ok || !regData.success) throw new Error(regData.message || 'Kayıt başarısız');
+
+                const userId = regData.user?.id || regData.userId;
+
+                // 2) Mağaza oluştur
+                const storeRes = await fetch('http://localhost:5000/api/stores', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': regData.token ? ('Bearer ' + regData.token) : '' },
+                    body: JSON.stringify({
+                        userId: userId,
+                        name: businessName,
+                        category: category,
+                        city: city,
+                        businessType: businessType
+                    })
+                });
+                const storeData = await storeRes.json();
+                if (!storeRes.ok || !storeData.success) throw new Error(storeData.message || 'Mağaza oluşturma başarısız');
+
+                // Başarılı kayıt
+                localStorage.setItem('authToken', regData.token || '');
+                localStorage.setItem('currentUser', JSON.stringify(regData.user || { id: userId, name: fullName, email: email, role: 'seller' }));
+                localStorage.setItem('veloraStoreActive', 'true');
+                alert('Mağaza hesabınız başarıyla oluşturuldu! Hoş geldiniz, ' + fullName);
+                window.location.href = 'magazam.html';
+                return;
+            } catch (err) {
+                // Local fallback
+                const storeDetails = {
+                    id: 'store_' + Math.random().toString(36).substr(2, 9),
+                    seller: {
+                        name: fullName,
+                        businessType: businessType,
+                        email: email,
+                        phone: '+90 555 000 00 00'
+                    },
+                    store: {
+                        name: businessName,
+                        category: category,
+                        city: city,
+                        status: 'Aktif',
+                        createdAt: new Date().toISOString().split('T')[0]
+                    },
+                    password: password,
+                    products: []
+                };
+
+                let stores = [];
+                try {
+                    stores = JSON.parse(localStorage.getItem('veloraStores') || '[]');
+                    if (!Array.isArray(stores)) stores = [];
+                } catch (e) { stores = []; }
+
+                stores.push(storeDetails);
+                localStorage.setItem('veloraStores', JSON.stringify(stores));
+                localStorage.setItem('veloraStore', JSON.stringify(storeDetails));
+                localStorage.setItem('veloraStoreActive', 'true');
+                alert('Mağaza hesabınız (yerel) oluşturuldu! Hoş geldiniz, ' + fullName);
+                window.location.href = 'magazam.html';
+            }
+        }
+    </script>
+    <script src="password-phone-helper.js"></script>
+</body>
+
+</html>

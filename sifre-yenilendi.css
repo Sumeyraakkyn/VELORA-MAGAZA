@@ -1,0 +1,74 @@
+/* sifre-yenilendi.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F5EBE6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.success-card {
+    background: white;
+    padding: 60px 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    animation: popUp 0.5s ease;
+}
+
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin: 0 auto 30px;
+}
+
+h2 {
+    color: #2D1A16;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.login-btn {
+    display: inline-block;
+    background-color: #D97757;
+    color: white;
+    text-decoration: none;
+    padding: 15px 50px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #c06547;
+}
+
+@keyframes popUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,171 @@
+/* sifre.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Using the provided screenshot warm background as inspiration */
+    background: url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: rgba(230, 208, 202, 0.95);
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 50px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    color: #D97757;
+    margin: 0;
+}
+
+.brand-tagline {
+    font-size: 0.8rem;
+    color: #6B5447;
+    margin: 0;
+}
+
+.nav-btn {
+    background-color: #C17C5F;
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 40px 20px;
+}
+
+/* Background Text Effect */
+.background-title {
+    font-size: 4rem;
+    color: rgba(93, 64, 55, 0.15);
+    /* Very subtle dark brown */
+    position: absolute;
+    top: 20%;
+    z-index: 0;
+    font-weight: 800;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    width: 100%;
+}
+
+.card-container {
+    background: rgba(235, 215, 210, 0.65);
+    /* Glassy pinkish tone */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 15px;
+    max-width: 800px;
+    /* Wide card as per image */
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.card-title {
+    font-size: 2rem;
+    color: #3E2723;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.card-desc {
+    color: #2D1A16;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #2D1A16;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.helper-text {
+    font-size: 0.85rem;
+    color: #4E342E;
+    margin-top: 5px;
+}
+
+.submit-btn {
+    background-color: #C17C5F;
+    color: #2D1A16;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 1px dashed #5D4037;
+}
+
+.submit-btn:hover {
+    background-color: #A6654A;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .background-title {
+        font-size: 2.5rem;
+        top: 15%;
+    }
+}

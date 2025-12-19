@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yönetici Paneli - Velora</title>
+  <meta name="description" content="Velora yönetici paneli - mağaza ve satıcı yönetimi" />
+  <link rel="stylesheet" href="yonetici-sayfa.css" />    <link rel="stylesheet" href="password-phone-helper.css" />  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="logo.png" alt="Velora" class="brand-logo" />
+      <div class="brand-text">
+        <h1>VELORA</h1>
+        <span>Admin Panel</span>
+      </div>
+    </div>
+    <nav class="menu">
+      <a href="#" class="menu-item active" data-view="magaza">Mağazalar</a>
+      <a href="#" class="menu-item" data-view="profil">Profilim</a>
+      <a href="yonetici-giris.html" class="menu-item logout">Çıkış</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <h2 id="pageTitle">Yönetici Paneli</h2>
+      <div class="admin-info" id="adminInfo">Hoş geldiniz</div>
+    </header>
+
+    <!-- MAĞAZALAR VIEW -->
+    <div id="magazaView" class="view active">
+      <section class="stats" id="stats">
+        <div class="card stat">
+          <div class="stat-icon">🏬</div>
+          <div class="stat-content">
+            <div class="stat-label">Açılan Mağaza</div>
+            <div class="stat-value" id="storeCount">0</div>
+          </div>
+        </div>
+        <div class="card stat">
+          <div class="stat-icon">👩‍💻</div>
+          <div class="stat-content">
+            <div class="stat-label">Satıcı Sayısı</div>
+            <div class="stat-value" id="sellerCount">0</div>
+          </div>
+        </div>
+        <div class="card stat">
+          <div class="stat-icon">📦</div>
+          <div class="stat-content">
+            <div class="stat-label">Toplam Ürün</div>
+            <div class="stat-value" id="productCount">0</div>
+          </div>
+        </div>
+        <div class="card stat">
+          <div class="stat-icon">💳</div>
+          <div class="stat-content">
+            <div class="stat-label">Aktif Mağaza</div>
+            <div class="stat-value" id="activeStoreCount">0</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h3>Mağazalar ve Satıcılar</h3>
+          <div class="actions">
+            <input type="text" id="search" placeholder="İsim veya mağaza ara..." />
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table" id="storeTable">
+            <thead>
+              <tr>
+                <th>Satıcı</th>
+                <th>Mağaza</th>
+                <th>Ürün Sayısı</th>
+                <th>Durum</th>
+                <th>İletişim</th>
+                <th>Detay</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS ile doldurulacak -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h4>Mağaza Bilgileri</h4>
+          <div id="storeDetails" class="details">
+            Bir mağaza seçin.
+          </div>
+        </div>
+        <div class="card">
+          <h4>Ürün Özeti</h4>
+          <div id="productSummary" class="details">
+            Bir mağaza seçin.
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:16px;">
+        <h4>Hareketler / Satışlar</h4>
+        <div id="adminActivities" style="max-height:260px; overflow:auto; padding-top:8px;">
+          <div style="color:var(--text-label); padding:12px;">Henüz hareket yok.</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PROFIL VIEW -->
+    <div id="profilView" class="view">
+      <section class="profile-card card">
+        <h3>Admin Profili</h3>
+        <form id="profileForm" class="profile-form">
+          <div class="form-group">
+            <label for="firstName">Ad:</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Soyad:</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-posta:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="currentPassword">Mevcut Şifre:</label>
+            <input type="password" id="currentPassword" name="currentPassword" placeholder="Değişiklik yapmak için mevcut şifreyi girin">
+          </div>
+
+          <div class="form-group">
+            <label for="newPassword">Yeni Şifre:</label>
+            <input type="password" id="newPassword" name="newPassword" placeholder="Yeni şifre (opsiyonel)">
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Şifreyi Onayla:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Yeni şifreyi tekrar girin">
+          </div>
+
+          <div class="form-group">
+            <label for="adminCode">Yönetici Kodu:</label>
+            <input type="text" id="adminCode" name="adminCode" required>
+          </div>
+
+          <div class="button-group">
+            <button type="submit" class="btn save">Kaydet</button>
+            <button type="button" class="btn cancel" onclick="cancelEdit()">İptal</button>
+          </div>
+        </form>
+
+        <div id="profileInfo" class="profile-info">
+          <div class="info-item">
+            <span class="label">Ad Soyad:</span>
+            <span class="value" id="displayName">-</span>
+          </div>
+          <div class="info-item">
+            <span class="label">E-posta:</span>
+            <span class="value" id="displayEmail">-</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Yönetici Kodu:</span>
+            <span class="value" id="displayCode">***</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Kayıt Tarihi:</span>
+            <span class="value" id="displayDate">-</span>
+          </div>
+          <button type="button" class="btn edit" onclick="editProfile()">Düzenle</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    let currentStores = [];
+
+    // Fetch real data from localStorage
+    function getStoresFromLocalStorage() {
+      try {
+        const stored = localStorage.getItem('veloraStores');
+        if (stored) {
+          const stores = JSON.parse(stored);
+          return Array.isArray(stores) ? stores : [];
+        }
+      } catch (e) {
+        console.error('Error reading stores:', e);
+      }
+      return [];
+    }
+
+    // Fetch all products from localStorage
+    function getProductsFromLocalStorage() {
+      try {
+        const stored = localStorage.getItem('products');
+        if (stored) {
+          const products = JSON.parse(stored);
+          return Array.isArray(products) ? products : [];
+        }
+      } catch (e) {
+        console.error('Error reading products:', e);
+      }
+      return [];
+    }
+
+    const mockStores = [
+      {
+        id: 1,
+        seller: { name: 'Ayşe Yılmaz', email: 'ayse@example.com', phone: '+90 555 111 22 33' },
+        store: { name: 'Ayşe Atelier', createdAt: '2025-03-02', city: 'İstanbul', status: 'Aktif' },
+        products: [
+          { name: 'El Yapımı Çanta', price: 650, stock: 12 },
+          { name: 'İpek Fular', price: 280, stock: 30 },
+          { name: 'Keçe Cüzdan', price: 190, stock: 20 }
+        ]
+      },
+      {
+        id: 2,
+        seller: { name: 'Fatma Demir', email: 'fatma@example.com', phone: '+90 555 444 55 66' },
+        store: { name: 'Demir Design', createdAt: '2025-04-11', city: 'Ankara', status: 'Aktif' },
+        products: [
+          { name: 'Seramik Kupa', price: 220, stock: 50 },
+          { name: 'Vazo', price: 480, stock: 8 }
+        ]
+      }
+    ];
+
+    function formatTL(value) { return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(value); }
+
+    function renderStats(stores, products) {
+      const storeCount = stores.length;
+      const sellerCount = new Set(stores.map(s => s.seller.email)).size;
+      const productCount = products.length;
+      const activeStoreCount = stores.filter(s => s.store.status === 'Aktif').length;
+
+      document.getElementById('storeCount').textContent = storeCount;
+      document.getElementById('sellerCount').textContent = sellerCount;
+      document.getElementById('productCount').textContent = productCount;
+      document.getElementById('activeStoreCount').textContent = activeStoreCount;
+    }
+
+    function renderTable(stores) {
+      const tbody = document.querySelector('#storeTable tbody');
+      tbody.innerHTML = '';
+
+      stores.forEach(store => {
+        const tr = document.createElement('tr');
+        const productCount = store.products ? store.products.length : 0;
+        tr.innerHTML = `
+          <td>${store.seller.name}</td>
+          <td>${store.store.name}</td>
+          <td>${productCount}</td>
+          <td><span class="badge ${store.store.status === 'Aktif' ? 'success' : store.store.status === 'Beklemede' ? 'warning' : 'default'}">${store.store.status}</span></td>
+          <td>
+            <a href="mailto:${store.seller.email}" class="link">${store.seller.email}</a>
+          </td>
+          <td><button class="btn small" data-id="${store.id}">Görüntüle</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      tbody.querySelectorAll('button[data-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          const st = currentStores.find(s => s.id === id);
+          if (st) {
+            renderDetails(st);
+          }
+        });
+      });
+    }
+
+    function renderDetails(s) {
+      const storeDetails = document.getElementById('storeDetails');
+      storeDetails.innerHTML = `
+        <div class="detail-grid">
+          <div><span class="muted">Mağaza:</span> <strong>${s.store.name}</strong></div>
+          <div><span class="muted">Şehir:</span> ${s.store.city}</div>
+          <div><span class="muted">Durum:</span> ${s.store.status}</div>
+          <div><span class="muted">Açılış:</span> ${new Date(s.store.createdAt).toLocaleDateString('tr-TR')}</div>
+          <div><span class="muted">Satıcı:</span> ${s.seller.name}</div>
+          <div><span class="muted">E-posta:</span> ${s.seller.email}</div>
+        </div>
+      `;
+
+      const productSummary = document.getElementById('productSummary');
+      const products = s.products || [];
+      const totalStock = products.reduce((sum, p) => sum + (p.stock || 0), 0);
+      const avgPrice = products.length > 0 ? products.reduce((sum, p) => sum + (p.price || 0), 0) / products.length : 0;
+      
+      productSummary.innerHTML = `
+        <ul class="list">
+          <li><span class="muted">Ürün Sayısı:</span> ${products.length}</li>
+          <li><span class="muted">Toplam Stok:</span> ${totalStock}</li>
+          <li><span class="muted">Ortalama Fiyat:</span> ${formatTL(avgPrice)}</li>
+        </ul>
+        ${products.length > 0 ? `
+        <div class="table-like">
+          <div class="thead">
+            <div>Ürün</div>
+            <div>Fiyat</div>
+            <div>Stok</div>
+          </div>
+          ${products.map(p => `
+            <div class="row">
+              <div>${p.name}</div>
+              <div>${formatTL(p.price || 0)}</div>
+              <div>${p.stock || 0}</div>
+            </div>
+          `).join('')}
+        </div>
+        ` : '<p style="color: var(--muted);">Henüz ürün eklenmedi.</p>'}
+      `;
+    }
+
+    function attachSearch(stores) {
+      const input = document.getElementById('search');
+      input.addEventListener('input', () => {
+        const q = input.value.toLowerCase();
+        const filtered = stores.filter(s =>
+          s.seller.name.toLowerCase().includes(q) ||
+          s.store.name.toLowerCase().includes(q)
+        );
+        renderTable(filtered);
+      });
+    }
+
+    function initAdminInfo() {
+      try {
+        const currentAdmin = JSON.parse(localStorage.getItem('currentAdmin') || 'null');
+        if (currentAdmin) {
+          document.getElementById('adminInfo').textContent = `Hoş geldiniz, ${currentAdmin.firstName} ${currentAdmin.lastName}`;
+          loadProfileData(currentAdmin);
+        }
+      } catch {}
+    }
+
+    // Profile Management
+    function loadProfileData(admin) {
+      document.getElementById('displayName').textContent = `${admin.firstName} ${admin.lastName}`;
+      document.getElementById('displayEmail').textContent = admin.email;
+      document.getElementById('displayCode').textContent = '***';
+      document.getElementById('displayDate').textContent = admin.createdAt || new Date().toLocaleDateString('tr-TR');
+
+      document.getElementById('firstName').value = admin.firstName || '';
+      document.getElementById('lastName').value = admin.lastName || '';
+      document.getElementById('email').value = admin.email || '';
+      document.getElementById('adminCode').value = admin.adminCode || '';
+    }
+
+    function editProfile() {
+      document.getElementById('profileInfo').style.display = 'none';
+      document.getElementById('profileForm').style.display = 'block';
+    }
+
+    function cancelEdit() {
+      document.getElementById('profileForm').style.display = 'none';
+      document.getElementById('profileInfo').style.display = 'block';
+    }
+
+    document.getElementById('profileForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const currentAdmin = JSON.parse(localStorage.getItem('currentAdmin'));
+      
+      if (document.getElementById('currentPassword').value && !document.getElementById('newPassword').value) {
+        alert('Yeni şifre girin');
+        return;
+      }
+
+      if (document.getElementById('newPassword').value !== document.getElementById('confirmPassword').value) {
+        alert('Şifreler eşleşmiyor');
+        return;
+      }
+
+      currentAdmin.firstName = document.getElementById('firstName').value;
+      currentAdmin.lastName = document.getElementById('lastName').value;
+      currentAdmin.email = document.getElementById('email').value;
+      currentAdmin.adminCode = document.getElementById('adminCode').value;
+      
+      if (document.getElementById('newPassword').value) {
+        currentAdmin.password = document.getElementById('newPassword').value;
+      }
+
+      currentAdmin.updatedAt = new Date().toISOString();
+
+      // Update in localStorage (also update in admins array if exists)
+      let admins = JSON.parse(localStorage.getItem('admins') || '[]');
+      const adminIndex = admins.findIndex(a => a.email === currentAdmin.email);
+      if (adminIndex >= 0) {
+        admins[adminIndex] = currentAdmin;
+      }
+      localStorage.setItem('admins', JSON.stringify(admins));
+      localStorage.setItem('currentAdmin', JSON.stringify(currentAdmin));
+
+      alert('Profil başarıyla güncellendi!');
+      loadProfileData(currentAdmin);
+      cancelEdit();
+      document.getElementById('adminInfo').textContent = `Hoş geldiniz, ${currentAdmin.firstName} ${currentAdmin.lastName}`;
+    });
+
+    // View Switching
+    document.querySelectorAll('.menu-item[data-view]').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        document.querySelectorAll('.menu-item[data-view]').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        
+        const viewName = item.getAttribute('data-view');
+        document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+        
+        if (viewName === 'magaza') {
+          document.getElementById('magazaView').classList.add('active');
+          document.getElementById('pageTitle').textContent = 'Mağazalar ve Satıcılar';
+        } else if (viewName === 'profil') {
+          document.getElementById('profilView').classList.add('active');
+          document.getElementById('pageTitle').textContent = 'Admin Profili';
+        }
+      });
+    });
+
+    // Initialize
+    (function() {
+      initAdminInfo();
+      currentStores = getStoresFromLocalStorage();
+      if (currentStores.length === 0) {
+        currentStores = mockStores;
+      }
+      const allProducts = getProductsFromLocalStorage();
+      renderStats(currentStores, allProducts);
+      renderTable(currentStores);
+      attachSearch(currentStores);
+      renderAdminActivities();
+    })();
+
+    function renderAdminActivities() {
+      const container = document.getElementById('adminActivities');
+      if (!container) return;
+      const activities = JSON.parse(localStorage.getItem('adminActivities') || '[]');
+      if (!activities || activities.length === 0) {
+        container.innerHTML = '<div style="color:var(--text-label); padding:12px;">Henüz hareket yok.</div>';
+        return;
+      }
+      container.innerHTML = '';
+      activities.slice().reverse().forEach(act => {
+        const div = document.createElement('div');
+        div.style.padding = '10px';
+        div.style.borderBottom = '1px solid var(--border)';
+        div.innerHTML = `<div style="font-weight:600;">${act.type === 'sale' ? 'Satış' : act.type}</div>
+          <div style="font-size:13px; color:var(--text-label);">${act.productName || ''} — ${act.amount ? act.amount + ' TL' : ''}</div>
+          <div style="font-size:12px; color:#666; margin-top:6px;">${new Date(act.date).toLocaleString('tr-TR')}</div>`;
+        container.appendChild(div);
+      });
+    }
+
+    // Keep activities up-to-date across tabs
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'adminActivities' || e.key === 'latestSale') {
+        renderAdminActivities();
+        // refresh stats as well
+        const allProducts2 = getProductsFromLocalStorage();
+        renderStats(currentStores, allProducts2);
+      }
+    });
+  </script>
+  <script src="password-phone-helper.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satışa Başlayın - VELORA</title>
+    <meta name="description" content="Velora'da satışa başlayın ve müşterilerinize ulaşın.">
+    <link rel="stylesheet" href="satis.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Velora Logo" class="logo-icon">
+                <div class="brand">
+                    <h1 class="brand-name">VELORA</h1>
+                    <p class="brand-tagline">Kadın üreticilerin dijital pazarı</p>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="ekran.html" class="nav-link nav-btn">Anasayfa</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="page-header">
+            <h2 class="page-title">SATIŞA BAŞLAYIN</h2>
+            <p class="page-subtitle">Satışa Başlamaya Hazırsınız!</p>
+        </div>
+
+        <div class="sales-container">
+            <!-- Mağaza Durumu Kartı -->
+            <div class="status-card">
+                <div class="status-icon">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                        <rect x="25" y="30" width="50" height="45" rx="3" fill="#6B5437" />
+                        <rect x="42" y="50" width="16" height="20" fill="#F5EBE6" />
+                        <path d="M25 30 L50 15 L75 30" fill="#8B6B47" />
+                        <rect x="32" y="22" width="10" height="10" fill="#F5EBE6" />
+                        <circle cx="50" cy="10" r="4" fill="#D97757" />
+                    </svg>
+                </div>
+                <div class="status-content">
+                    <h3 class="status-title">Tebrikler! Mağazanız başarıyla oluşturuldu.</h3>
+                    <p class="status-description">
+                        Artık ürünleriniz Türkiye'nin dört bir yanındaki müşterilere ulaştırabilirsiniz
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bilgilendirme Kartları -->
+            <div class="info-cards">
+                <!-- Kart 1: Mağazanız Aktif -->
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#8B6B47" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <p class="info-text">Mağazanız aktif hale getirildi.</p>
+                </div>
+
+                <!-- Kart 2: Ürün Ekleme -->
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#8B6B47" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <p class="info-text">Ürün eklemeye devam edebilirsiniz.</p>
+                </div>
+
+                <!-- Kart 3: Sipariş Bildirimi -->
+                <div class="info-card">
+                    <div class="info-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#8B6B47" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <p class="info-text">Sipariş aldığınızda bildirim alacaksınız.</p>
+                </div>
+            </div>
+
+            <!-- Aksiyon Butonları -->
+            <div class="action-buttons">
+                <a href="magaza.html" class="action-btn secondary-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Mağazama Git
+                </a>
+
+                <a href="urun.html" class="action-btn primary-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Ürünü Ekle
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="background-overlay"></div>
+
+    <!-- Konfeti Animasyonu -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script>
+        // Konfeti animasyonu
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#D97757', '#E8C4B8', '#8B6B47', '#A68968', '#F5EBE6'];
+
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                container.appendChild(confetti);
+            }
+
+            // 5 saniye sonra konfetileri temizle
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        // Sayfa yüklendiğinde konfeti göster
+        window.addEventListener('load', createConfetti);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+/* ===== CSS RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-coral: #C87A5E;
+    --primary-dark: #A6654A;
+    --bg-pink: #E8D3CE;
+    --card-bg: rgba(225, 201, 196, 0.95);
+    /* Pinkish background matching image */
+    --text-dark: #3E2723;
+    --text-label: #2D1A16;
+    --input-bg: #FFFFFF;
+    --shadow-soft: 0 8px 32px rgba(62, 39, 35, 0.15);
+    --transition: cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Using the same background image as magaza/ekran for consistency */
+    background: linear-gradient(rgba(62, 39, 35, 0.3), rgba(62, 39, 35, 0.3)),
+        url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+/* Header Styles (Same as magaza.css) */
+.header {
+    background-color: rgba(230, 208, 202, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-size: 1.8rem;
+    color: var(--primary-coral);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.brand-tagline {
+    font-size: 0.85rem;
+    color: #5D4037;
+    font-weight: 500;
+}
+
+.nav-btn {
+    background-color: var(--primary-coral);
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all var(--transition);
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Main Content */
+.main-content {
+    padding: 40px 20px;
+    min-height: calc(100vh - 85px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+}
+
+.page-subtitle {
+    color: #FFF0E6;
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Account Card matching the image's layout */
+.account-card {
+    background: var(--card-bg);
+    border-radius: 4px;
+    /* Image shows sharp/semi-sharp corners */
+    padding: 0;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    overflow: hidden;
+    /* Or contained appropriately */
+    min-height: 500px;
+    position: relative;
+    /* Image shows a single pinkish block */
+}
+
+.form-section {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-weight: 700;
+    color: #000;
+    /* As per image, labels are dark/black */
+    font-size: 1.1rem;
+    width: 180px;
+    /* Fixed width for alignment */
+    flex-shrink: 0;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    /* Sharp corners as per image */
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group textarea {
+    resize: none;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233E2723' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+    padding-right: 35px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: 2px solid var(--primary-coral);
+    background-color: #FFF;
+}
+
+/* Submit Button positioned at bottom right, overlaying or inside */
+.submit-btn {
+    background-color: #C17C5F;
+    /* Terracotta */
+    color: #2D1A16;
+    /* Dark text as per image */
+    font-weight: 600;
+    padding: 15px 40px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    /* Positioning it */
+    align-self: flex-end;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px dashed #5D4037;
+    /* The image has a dashed border look around the button area */
+}
+
+.submit-btn:hover {
+    background-color: #A6654A;
+    color: #FFF;
+}
+
+/* Visual Section (Right Side) */
+.visual-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Circle with logo inside */
+.logo-circle {
+    width: 250px;
+    height: 250px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.center-logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.logo-text {
+    color: var(--primary-coral);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .account-card {
+        flex-direction: column;
+    }
+
+    .visual-section {
+        padding: 40px;
+        order: -1;
+        /* Show logo on top on mobile */
+    }
+
+    .form-section {
+        padding: 20px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+    }
+
+    .submit-btn {
+        width: 100%;
+        text-align: center;
+    }
+}

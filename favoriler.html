@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorilerim - Velora</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .empty-favorites {
+            text-align: center;
+            padding: 50px 20px;
+            color: var(--text-medium);
+        }
+
+        .empty-favorites i {
+            font-size: 4rem;
+            color: var(--secondary-rose);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="brand">
+                <a href="home.html" style="text-decoration: none; display: flex; align-items: center; gap: 15px;">
+                    <div class="brand-logo">
+                        <img src="logo.png" alt="Velora Logo">
+                    </div>
+                    <div class="brand-info">
+                        <h1>VELORA</h1>
+                        <span>Kadın üreticilerin dijital pazarı</span>
+                    </div>
+                </a>
+            </div>
+            <div class="header-actions">
+                <a href="home.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Alışverişe Dön</a>
+                <a href="kullanici-giris.html" class="btn-primary">Çıkış Yap</a>
+            </div>
+        </header>
+
+        <section class="hero" style="min-height: 200px; padding: 40px 0;">
+            <div class="hero-content" style="text-align: center; align-items: center;">
+                <h2>Favorilerim</h2>
+                <p>Beğendiğiniz ürünler burada saklanır.</p>
+            </div>
+        </section>
+
+        <!-- Products Grid for Favorites -->
+        <section class="products-grid" id="favorites-grid">
+            <!-- Favorites will be loaded here via JS -->
+        </section>
+
+        <div id="empty-message" class="empty-favorites" style="display: none;">
+            <i class="fas fa-heart-broken"></i>
+            <h3>Favorileriniz henüz boş.</h3>
+            <p>Ürünleri keşfedin ve beğendiklerinizi listeye ekleyin.</p>
+            <a href="home.html" class="btn-primary" style="margin-top: 20px; display: inline-block;">Ürünleri Keşfet</a>
+        </div>
+    </div>
+
+    <script>
+        // Load favorites from LocalStorage
+        const favoritesGrid = document.getElementById('favorites-grid');
+        const emptyMessage = document.getElementById('empty-message');
+
+        // Bu örnek veri yapısını home.html'de oluşturacağız
+        const favorites = JSON.parse(localStorage.getItem('veloraFavorites') || '[]');
+
+        if (favorites.length === 0) {
+            favoritesGrid.style.display = 'none';
+            emptyMessage.style.display = 'block';
+        } else {
+            favoritesGrid.style.display = 'grid';
+            emptyMessage.style.display = 'none';
+
+            favorites.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <button class="favorite-btn active" onclick="removeFromFavorites('${product.id}')"><i class="fas fa-heart"></i></button>
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <div class="product-info">
+                        <h3>${product.title}</h3>
+                        <p class="product-price">${product.price}</p>
+                        <button class="add-to-cart">Sepete Ekle</button>
+                    </div>
+                `;
+                favoritesGrid.appendChild(card);
+            });
+        }
+
+        function removeFromFavorites(id) {
+            const newFavorites = favorites.filter(f => f.id !== id);
+            localStorage.setItem('veloraFavorites', JSON.stringify(newFavorites));
+            location.reload(); // Refresh to show changes
+        }
+    </script>
+</body>
+
+</html>

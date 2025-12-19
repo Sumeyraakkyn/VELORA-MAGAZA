@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilimi Düzenle - VELORA</title>
+    <link rel="stylesheet" href="profil.css">
+    <link rel="stylesheet" href="password-phone-helper.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Velora Logo" class="logo-icon">
+                <div class="brand">
+                    <h1 class="brand-name">VELORA</h1>
+                    <p class="brand-tagline">Kadın üreticilerin dijital pazarı</p>
+                </div>
+            </div>
+            <a href="home.html" class="nav-btn">Anasayfa</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="avatar-circle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h2>Profilimi Düzenle</h2>
+                <p>Kişisel bilgilerinizi buradan güncelleyebilirsiniz.</p>
+            </div>
+
+            <form id="profileForm" class="profile-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Ad</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Soyad</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-posta Adresi</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon Numarası</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Adres</label>
+                    <textarea id="address" name="address" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="save-btn">Değişiklikleri Kaydet</button>
+            </form>
+        </div>
+    </main>
+
+    <div class="background-overlay"></div>
+
+    <script>
+        // Load User Data
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+            if (currentUser) {
+                document.getElementById('firstName').value = currentUser.firstName || '';
+                document.getElementById('lastName').value = currentUser.lastName || '';
+                document.getElementById('email').value = currentUser.email || '';
+                document.getElementById('phone').value = currentUser.phone || '';
+                document.getElementById('address').value = currentUser.address || '';
+            } else {
+                // If checking the page without login, maybe redirect or show empty
+                // window.location.href = 'kullanici-giris.html';
+            }
+        });
+
+        // Save User Data
+        document.getElementById('profileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+
+            // Update fields
+            currentUser.firstName = document.getElementById('firstName').value;
+            currentUser.lastName = document.getElementById('lastName').value;
+            currentUser.email = document.getElementById('email').value;
+            currentUser.phone = document.getElementById('phone').value;
+            currentUser.address = document.getElementById('address').value;
+
+            // Save to localStorage (Current Session)
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+            // Also update in the main 'users' array if you want persistent across logins
+            let users = JSON.parse(localStorage.getItem('users') || '[]');
+            const index = users.findIndex(u => u.email === currentUser.email); // Match by email (assuming email didn't change, or use ID)
+
+            if (index !== -1) {
+                users[index] = { ...users[index], ...currentUser };
+                localStorage.setItem('users', JSON.stringify(users));
+            }
+
+            alert('✅ Profil bilgileriniz başarıyla güncellendi!');
+        });
+    </script>
+    <script src="password-phone-helper.js"></script>
+</body>
+
+</html>

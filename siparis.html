@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepetim - Velora</title>
+    <link rel="stylesheet" href="siparis.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <header class="top-header">
+            <a href="home.html" class="brand">
+                <div class="brand-logo"><img src="logo.png" alt="Velora"></div>
+                <h1>VELORA</h1>
+            </a>
+            <a href="home.html" style="text-decoration: none; color: var(--text-light);"><i
+                    class="fas fa-arrow-left"></i> Alışverişe Dön</a>
+        </header>
+
+        <div class="cart-layout">
+            <!-- Cart Items -->
+            <div class="cart-items-section">
+                <h2>Sepetim (<span id="cart-count">0</span> Ürün)</h2>
+                <div id="cart-items-container">
+                    <!-- Javascript will populate this -->
+                </div>
+
+                <div id="empty-cart-message" class="empty-cart" style="display: none;">
+                    <i class="fas fa-shopping-basket"></i>
+                    <h3>Sepetinizde ürün bulunmamaktadır.</h3>
+                    <p>Alışverişe başlayarak sepetinizi doldurabilirsiniz.</p>
+                    <a href="home.html" class="checkout-btn"
+                        style="background-color: #5D4037; display: inline-block; width: auto; margin-top: 20px;">Alışverişe
+                        Başla</a>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3>Sipariş Özeti</h3>
+                <div class="summary-row">
+                    <span>Ara Toplam</span>
+                    <span id="subtotal">0 TL</span>
+                </div>
+                <div class="summary-row">
+                    <span>Kargo</span>
+                    <span id="shipping">29.90 TL</span>
+                </div>
+                <div class="summary-total">
+                    <span>Toplam</span>
+                    <span id="total">0 TL</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">Siparişi Onayla</button>
+                <a href="home.html" class="continue-shopping">Alışverişe Devam Et</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load cart from localStorage
+        // We'll use 'veloraCart' key for cart items
+        let cart = JSON.parse(localStorage.getItem('veloraCart') || '[]');
+
+        // Sample structure of a cart item: { id: 1, title: 'Ürün Adı', price: '100 TL', image: 'urun1.jpg', quantity: 1 }
+
+        const container = document.getElementById('cart-items-container');
+        const emptyMsg = document.getElementById('empty-cart-message');
+        const countSpan = document.getElementById('cart-count');
+        const subtotalSpan = document.getElementById('subtotal');
+        const totalSpan = document.getElementById('total');
+        const summarySection = document.querySelector('.order-summary');
+
+        function renderCart() {
+            container.innerHTML = '';
+            let subtotal = 0;
+            let itemCount = 0;
+
+            if (cart.length === 0) {
+                emptyMsg.style.display = 'block';
+                summarySection.style.opacity = '0.5';
+                summarySection.style.pointerEvents = 'none';
+            } else {
+                emptyMsg.style.display = 'none';
+                summarySection.style.opacity = '1';
+                summarySection.style.pointerEvents = 'auto';
+
+                cart.forEach((item, index) => {
+                    itemCount += item.quantity || 1;
+                    // Parse price (remove TL and spaces)
+                    let priceVal = parseFloat(item.price.replace('TL', '').trim());
+                    subtotal += priceVal * (item.quantity || 1);
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'cart-item';
+                    itemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="item-image">
+                    <div class="item-details">
+                        <div class="item-name">${item.title}</div>
+                        <div class="item-price">${item.price}</div>
+                    </div>
+                    <div class="item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span>${item.quantity || 1}</span>
+                            <button class="qty-btn" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                        <button class="remove-btn" onclick="removeFromCart(${index})"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                    container.appendChild(itemDiv);
+                });
+            }
+
+            countSpan.textContent = itemCount;
+            subtotalSpan.textContent = subtotal.toFixed(2) + ' TL';
+            let shipping = subtotal > 0 ? 29.90 : 0;
+            document.getElementById('shipping').textContent = shipping > 0 ? shipping + ' TL' : '0 TL';
+            totalSpan.textContent = (subtotal + shipping).toFixed(2) + ' TL';
+        }
+
+        function updateQuantity(index, change) {
+            if (!cart[index].quantity) cart[index].quantity = 1;
+            cart[index].quantity += change;
+            if (cart[index].quantity < 1) cart[index].quantity = 1;
+            saveAndRender();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveAndRender();
+        }
+
+        function saveAndRender() {
+            localStorage.setItem('veloraCart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                alert('Sipariş vermek için lütfen önce giriş yapın!');
+                window.location.href = 'kullanici-giris.html';
+                return;
+            }
+
+            // Create Order Object
+            const orderId = '#' + Math.floor(Math.random() * 10000);
+            const today = new Date().toLocaleDateString('tr-TR');
+            // Estimated delivery: 3 days later
+            const deliveryDate = new Date();
+            deliveryDate.setDate(deliveryDate.getDate() + 3);
+            const deliveryDateStr = deliveryDate.toLocaleDateString('tr-TR');
+
+            const activeOrder = {
+                id: orderId,
+                user: currentUser,
+                items: cart,
+                date: today,
+                deliveryDate: deliveryDateStr,
+                status: 'Siparişiniz Alındı',
+                trackingNo: Math.floor(Math.random() * 10000000000)
+            };
+
+            // Save active order for tracking page
+            localStorage.setItem('activeOrder', JSON.stringify(activeOrder));
+
+            // Create individual orders for each product and send notifications to sellers
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+            
+            cart.forEach(item => {
+                const product = products.find(p => p.id === item.id || p.name === item.title);
+                if (product) {
+                    // Create order record
+                    const order = {
+                        id: Math.random().toString(36).substr(2, 9),
+                        productId: product.id,
+                        buyerEmail: currentUser.email,
+                        buyerName: currentUser.firstName + ' ' + currentUser.lastName,
+                        sellerEmail: product.ownerEmail,
+                        sellerName: product.ownerName,
+                        date: new Date().toISOString(),
+                        quantity: item.quantity || 1,
+                        totalPrice: (parseFloat(item.price) * (item.quantity || 1))
+                    };
+                    orders.push(order);
+                    
+                    // Create notification for seller
+                    const notification = {
+                        id: Math.random().toString(36).substr(2, 9),
+                        productName: product.name,
+                        productId: product.id,
+                        buyerName: currentUser.firstName + ' ' + currentUser.lastName,
+                        sellerEmail: product.ownerEmail,
+                        date: new Date().toISOString(),
+                        type: 'sale'
+                    };
+                    notifications.push(notification);
+                }
+            });
+            
+            localStorage.setItem('orders', JSON.stringify(orders));
+            localStorage.setItem('notifications', JSON.stringify(notifications));
+
+            alert('Siparişiniz başarıyla oluşturuldu! Takip sayfasına yönlendiriliyorsunuz.');
+
+            // Clear cart logic could go here if we wanted to empty it
+            // localStorage.removeItem('veloraCart');
+
+            window.location.href = 'takip.html';
+        }
+
+        // Initial Render
+        renderCart();
+
+    </script>
+
+</body>
+
+</html>

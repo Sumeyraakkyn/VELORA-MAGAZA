@@ -1,0 +1,12 @@
+{
+  "name": "velora",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Static site with a simple dev server",
+  "scripts": {
+    "dev": "live-server --port=5500 --open=index.html"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

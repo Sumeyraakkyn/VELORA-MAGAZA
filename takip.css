@@ -1,0 +1,345 @@
+/* takip.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #D97757;
+    --primary-dark: #C56545;
+    --bg-overlay: rgba(220, 190, 180, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.4);
+    --text-dark: #4A3428;
+    --text-light: #6B5447;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Warm blurred background similar to image */
+    background: url('https://images.unsplash.com/photo-1616486338812-3aeee77437e1?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(180, 140, 130, 0.4);
+    /* Brownish tint */
+    backdrop-filter: blur(8px);
+    z-index: -1;
+}
+
+/* Header */
+.header {
+    background-color: rgba(230, 208, 202, 0.9);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    width: 50px;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 700;
+}
+
+.brand-tagline {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.nav-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Main Content */
+.main-content {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    /* Large title like in image */
+    font-weight: 700;
+    color: #3E2723;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
+    letter-spacing: 1px;
+}
+
+.cart-btn {
+    background-color: #D99B57;
+    /* More orange/yellow tone */
+    color: white;
+    /* Or maybe dark brown text? Image looks dark text */
+    color: #4A3428;
+    background-color: #E8AC7E;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass Card */
+.tracking-card {
+    background: rgba(255, 255, 255, 0.45);
+    /* High transparency */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* White Top Bar */
+.order-info-header {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px 30px;
+    border-radius: 0;
+    /* Boxy look in image? Or slightly rounded. Let's do slightly rounded */
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.order-no {
+    font-weight: 800;
+    margin-right: 15px;
+}
+
+.user-name {
+    font-weight: 600;
+}
+
+.product-name {
+    margin-top: 5px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.order-date-box {
+    text-align: right;
+}
+
+.order-date-box .label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.order-date-box .value {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Timeline */
+.timeline-section {
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-icon {
+    width: 50px;
+    height: 50px;
+    background: #6D4C41;
+    /* Dark brown check */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.timeline {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Vertical Line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #E8AC7E;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    opacity: 0.5;
+    /* Fade out future steps */
+}
+
+.timeline-item.completed,
+.timeline-item.active {
+    opacity: 1;
+}
+
+.timeline-dot {
+    width: 0;
+    /* Hidden or part of the line design? Image doesn't show dots explicitly, just boxes vs dates. */
+    /* Wait, checking image again. I see text boxes on left, date on right. The line is a separator. */
+}
+
+.timeline-content {
+    width: 45%;
+}
+
+.timeline-content.left {
+    text-align: right;
+    padding-right: 30px;
+    /* Space from line */
+}
+
+.timeline-content.right {
+    text-align: left;
+    padding-left: 30px;
+}
+
+.status-box {
+    display: inline-block;
+    background: #D99B57;
+    /* Orangeish brown */
+    color: #4A3428;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+    text-align: center;
+}
+
+.date {
+    font-weight: 600;
+    color: #3E2723;
+}
+
+/* Divider */
+.divider-line {
+    height: 4px;
+    background: #E8AC7E;
+    width: 100%;
+    border-radius: 2px;
+    margin: 40px 0;
+}
+
+/* Footer details */
+.tracking-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-item {
+    background: rgba(245, 235, 230, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    /* Slightly rounded */
+    min-width: 150px;
+    /* In Image: They look like white boxes */
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.footer-item .label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #4A3428;
+    margin-bottom: 5px;
+}
+
+.footer-item .value {
+    display: block;
+    font-size: 1.1rem;
+    color: #2D1A16;
+}
+
+@media (max-width: 768px) {
+    .tracking-footer {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-content.left {
+        width: auto;
+        text-align: left;
+        padding-left: 50px;
+    }
+
+    .timeline-content.right {
+        width: auto;
+        padding-left: 50px;
+        margin-top: 5px;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

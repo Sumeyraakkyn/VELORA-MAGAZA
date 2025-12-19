@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürünlerinizi Ekleyin - VELORA</title>
+    <meta name="description" content="Velora'nın akıllı ürün paneli ile ürünlerinizi kolayca ekleyin.">
+    <link rel="stylesheet" href="urun.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Velora Logo" class="logo-icon">
+                <div class="brand">
+                    <h1 class="brand-name">VELORA</h1>
+                    <p class="brand-tagline">Kadın üreticilerin dijital pazarı</p>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="home.html" class="nav-link nav-btn">Anasayfa</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="page-header">
+            <h2 class="page-title">ÜRÜNLERİNİZİ EKLEYİN</h2>
+            <p class="page-subtitle">Velora'nın akıllı ürün paneli ile tüm ürünlerinizi birkaç adımda vitrine
+                çıkarabilirsiniz.</p>
+        </div>
+
+        <div class="product-form-container">
+            <div class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                        <rect x="15" y="20" width="70" height="60" rx="5" fill="#A68968" stroke="#8B6B47"
+                            stroke-width="3" />
+                        <circle cx="35" cy="40" r="8" fill="#F5EBE6" />
+                        <path d="M20 65 L40 45 L55 60 L70 40 L85 55 L85 75 L20 75 Z" fill="#F5EBE6" />
+                    </svg>
+                    <h3 class="upload-title">Fotoğraf Yükle</h3>
+                    <p class="upload-subtitle">(Sürükleyip Bırakabilirsiniz)</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                </div>
+
+                <div class="upload-actions">
+                    <button class="action-btn cancel-btn" onclick="window.location.href='magazam.html'">İptal</button>
+                    <button class="action-btn save-btn" id="saveProductBtn">Ürünü Kaydet</button>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <form class="product-form" id="productForm">
+                    <div class="form-group">
+                        <label for="productName" class="form-label">Ürün Adı:</label>
+                        <input type="text" id="productName" name="productName" class="form-input"
+                            placeholder="Ürün adını girin" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price" class="form-label">Fiyat</label>
+                            <input type="number" id="price" name="price" class="form-input" placeholder="₺" min="0"
+                                step="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category" class="form-label">Kategori</label>
+                            <select id="category" name="category" class="form-input" required>
+                                <option value="">Seçiniz</option>
+                                <option value="kiyafet">Kıyafet</option>
+                                <option value="pantolon">Pantolon</option>
+                                <option value="etek">Etek</option>
+                                <option value="cocuk">Çocuk</option>
+                                <option value="tesettur">Tesettür</option>
+                                <option value="seramik">Seramik</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="form-label">Ürün Açıklaması</label>
+                        <textarea id="description" name="description" class="form-textarea"
+                            placeholder="Ürününüz hakkında detaylı bilgi verin..." rows="5" required></textarea>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="background-overlay"></div>
+
+    <script>
+        // Dosya yükleme işlemleri
+        const uploadBox = document.getElementById('uploadBox');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadBox.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        uploadBox.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadBox.style.borderColor = '#8B6B47';
+            uploadBox.style.backgroundColor = 'rgba(139, 107, 71, 0.1)';
+        });
+
+        uploadBox.addEventListener('dragleave', () => {
+            uploadBox.style.borderColor = '#D4AFA0';
+            uploadBox.style.backgroundColor = 'rgba(245, 235, 230, 0.5)';
+        });
+
+        uploadBox.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadBox.style.borderColor = '#D4AFA0';
+            uploadBox.style.backgroundColor = 'rgba(245, 235, 230, 0.5)';
+
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                alert(`✅ ${files.length} dosya yüklendi!`);
+                // Burada dosyaları işleyebilirsiniz
+            }
+        }
+
+        // Ürün kaydetme
+        document.getElementById('saveProductBtn').addEventListener('click', () => {
+            const form = document.getElementById('productForm');
+
+            if (form.checkValidity()) {
+                // Get store info
+                const store = JSON.parse(localStorage.getItem('veloraStore') || '{}');
+                const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+
+                const productData = {
+                    id: 'prod_' + Math.random().toString(36).substr(2, 9),
+                    name: document.getElementById('productName').value,
+                    price: document.getElementById('price').value,
+                    category: document.getElementById('category').value,
+                    description: document.getElementById('description').value,
+                    ownerName: store.ownerName || currentUser.firstName + ' ' + currentUser.lastName || 'Bilinmeyen Satıcı',
+                    ownerEmail: currentUser.email || '',
+                    storeName: store.storeName || 'Velora Mağazası',
+                    // Note: In real app, images are URLs. We use placeholder or base64 if needed, 
+                    // but here we just keep the reference or a default for the demo if not handled by a real backend upload.
+                    // Ideally we'd read the file to a data URL here for local demo persistence.
+                    image: '',
+                    createdAt: new Date().toISOString()
+                };
+
+                // Handle Image for Local Demo (read first file as DataURL)
+                const fileInput = document.getElementById('fileInput');
+                if (fileInput.files.length > 0) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        productData.image = e.target.result;
+                        saveProductToStorage(productData);
+                    };
+                    reader.readAsDataURL(fileInput.files[0]);
+                    return; // Wait for reader
+                }
+
+                // If no image, save immediately
+                saveProductToStorage(productData);
+
+            } else {
+                alert('❌ Lütfen tüm zorunlu alanları doldurun!');
+                form.reportValidity();
+            }
+        });
+
+        function saveProductToStorage(productData) {
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            products.push(productData);
+            localStorage.setItem('products', JSON.stringify(products));
+
+            alert('✅ Ürün başarıyla kaydedildi!\n\nMağaza paneline yönlendiriliyorsunuz...');
+            window.location.href = 'magazam.html';
+        }
+    </script>
+</body>
+
+</html>

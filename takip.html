@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sipariş Takibi - VELORA</title>
+    <link rel="stylesheet" href="takip.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Velora Logo" class="logo-icon">
+                <div class="brand">
+                    <h1 class="brand-name">VELORA</h1>
+                    <p class="brand-tagline">Kadın üreticilerin dijital pazarı</p>
+                </div>
+            </div>
+            <a href="home.html" class="nav-btn">Anasayfa</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1 class="page-title">SİPARİŞ KARGO DETAY</h1>
+            <a href="siparis.html" class="cart-btn">Sepetim</a>
+        </div>
+
+        <div class="tracking-card">
+            <!-- Order Info Header -->
+            <div class="order-info-header">
+                <div class="order-id-user">
+                    <span class="order-no" id="orderNo">#----</span>
+                    <span class="user-name" id="userName">Yükleniyor...</span>
+                    <div class="product-name" id="productName">Ürün bilgisi yükleniyor...</div>
+                </div>
+                <div class="order-date-box">
+                    <div class="label">Sipariş Tarihi</div>
+                    <div class="value" id="orderDate">--.--.----</div>
+                </div>
+            </div>
+
+            <!-- Timeline Section -->
+            <div class="timeline-section">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+
+                <div class="timeline">
+                    <!-- Step 1 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-content left">
+                            <div class="status-box">Siparişiniz Alındı</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right">
+                            <div class="date timeline-date">--.--.----</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-item completed">
+                        <div class="timeline-content left">
+                            <div class="status-box">Hazırlanıyor</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right">
+                            <div class="date timeline-date">--.--.----</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-item active">
+                        <div class="timeline-content left">
+                            <div class="status-box">Kargoda</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right">
+                            <div class="date timeline-date">--.--.----</div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-content left">
+                            <div class="status-box">Tamamlandı</div>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content right">
+                            <div class="date timeline-date">--.--.----</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider-line"></div>
+
+            <!-- Footer Details -->
+            <div class="tracking-footer">
+                <div class="footer-item">
+                    <span class="label">Kargo Firması</span>
+                    <span class="value">PTT</span>
+                </div>
+                <div class="footer-item">
+                    <span class="label">Takip No:</span>
+                    <span class="value" id="trackingNo">--------</span>
+                </div>
+                <div class="footer-item">
+                    <span class="label">Teslim Tarihi</span>
+                    <span class="value" id="deliveryDate">--.--.----</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="background-overlay"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Retrieve active order from LocalStorage
+            const activeOrderString = localStorage.getItem('activeOrder');
+
+            if (activeOrderString) {
+                const activeOrder = JSON.parse(activeOrderString);
+                console.log("Order found:", activeOrder);
+
+                // Update UI with IDs
+                if (document.getElementById('orderNo'))
+                    document.getElementById('orderNo').textContent = activeOrder.id;
+
+                if (document.getElementById('userName') && activeOrder.user)
+                    document.getElementById('userName').textContent = activeOrder.user.firstName + ' ' + activeOrder.user.lastName;
+
+                if (document.getElementById('orderDate'))
+                    document.getElementById('orderDate').textContent = activeOrder.date;
+
+                if (document.getElementById('productName')) {
+                    const names = activeOrder.items.map(i => i.title).join(', ');
+                    document.getElementById('productName').textContent = 'Ürün: ' + names;
+                }
+
+                if (document.getElementById('trackingNo'))
+                    document.getElementById('trackingNo').textContent = activeOrder.trackingNo;
+
+                if (document.getElementById('deliveryDate'))
+                    document.getElementById('deliveryDate').textContent = activeOrder.deliveryDate;
+
+                // Update timeline dates
+                const timelineDates = document.querySelectorAll('.timeline-date');
+                timelineDates.forEach(el => {
+                    el.textContent = activeOrder.date;
+                });
+
+            } else {
+                console.log("No active order found in localStorage.");
+                // Static fallback or message
+                document.getElementById('productName').innerHTML = '<i>Aktif sipariş bulunamadı. Lütfen sepetinizden sipariş oluşturun.</i>';
+                document.getElementById('userName').textContent = 'Misafir Kullanıcı';
+            }
+        });
+    </script>
+</body>
+
+</html>

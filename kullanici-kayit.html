@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kullanıcı Kayıt - VELORA</title>
+    <meta name="description" content="Velora'ya kullanıcı olarak kayıt olun. Alışveriş yapın ve mağaza açın.">
+    <link rel="stylesheet" href="kayit-form.css">
+    <link rel="stylesheet" href="password-phone-helper.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logo.png" alt="Velora Logo" class="logo-icon">
+                <div class="brand">
+                    <h1 class="brand-name">VELORA</h1>
+                    <p class="brand-tagline">Kadın üreticilerin dijital pazarı</p>
+                </div>
+            </div>
+
+            <nav class="nav">
+                <a href="ekran.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    Anasayfa
+                </a>
+                <a href="kayit.html" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    Geri
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="form-container">
+            <div class="form-card user-card">
+                <div class="card-header">
+                    <div class="icon-circle user-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h2 class="form-title">Kullanıcı Kayıt</h2>
+                    <p class="form-subtitle">Alışveriş yapın ve mağaza açın</p>
+                </div>
+
+                <form class="registration-form" id="userRegistrationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Ad
+                            </label>
+                            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Adınız"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Soyad
+                            </label>
+                            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Soyadınız"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            E-posta
+                        </label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="ornek@email.com"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="form-label">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                </path>
+                            </svg>
+                            Telefon
+                        </label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="0555 555 55 55"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            Şifre
+                        </label>
+                        <input type="password" id="password" name="password" class="form-input"
+                            placeholder="En az 8 karakter" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            Şifre Tekrar
+                        </label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input"
+                            placeholder="Şifrenizi tekrar girin" required>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="terms" required>
+                            <span class="checkbox-text">
+                                <a href="#" class="link">Kullanım Koşulları</a> ve
+                                <a href="#" class="link">Gizlilik Politikası</a>'nı okudum ve kabul ediyorum
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit user-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                            <polyline points="10 17 15 12 10 7"></polyline>
+                            <line x1="15" y1="12" x2="3" y2="12"></line>
+                        </svg>
+                        Kayıt Ol
+                    </button>
+
+                    <div class="form-footer">
+                        <p>Zaten hesabınız var mı? <a href="giris.html" class="link">Giriş Yapın</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div class="background-overlay"></div>
+
+    <div class="decorative-elements">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <script>
+        document.getElementById('userRegistrationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('❌ Şifreler eşleşmiyor!');
+                return;
+            }
+
+            if (password.length < 8) {
+                alert('❌ Şifre en az 8 karakter olmalıdır!');
+                return;
+            }
+
+            // LocalStorage'dan mevcut kullanıcıları al
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+            // E-posta kontrolü
+            const existingUser = users.find(u => u.email === email);
+            if (existingUser) {
+                alert('❌ Bu e-posta adresi zaten kayıtlı!\n\nLütfen farklı bir e-posta kullanın veya giriş yapın.');
+                return;
+            }
+
+            // Yeni kullanıcı oluştur
+            const newUser = {
+                firstName,
+                lastName,
+                email,
+                phone,
+                password,
+                type: 'user',
+                registeredAt: new Date().toISOString()
+            };
+
+            // Kullanıcıyı listeye ekle
+            users.push(newUser);
+
+            // LocalStorage'a kaydet
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // Başarılı kayıt
+            alert('✅ Kayıt başarılı!\n\nHoş geldiniz ' + firstName + ' ' + lastName + '!\n\nGiriş sayfasına yönlendiriliyorsunuz...');
+            window.location.href = 'kullanici-giris.html';
+        });
+    </script>
+    <script src="password-phone-helper.js"></script>
+</body>
+
+</html>

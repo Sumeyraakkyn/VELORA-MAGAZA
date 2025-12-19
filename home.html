@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora - Kadın Üreticilerin Dijital Pazarı</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Top Header -->
+        <header class="top-header">
+
+
+            <div class="brand">
+                <div class="brand-logo">
+                    <img src="logo.png" alt="Velora Logo">
+                </div>
+                <div class="brand-info">
+                    <h1>VELORA</h1>
+                    <span>Kadın üreticilerin dijital pazarı</span>
+                </div>
+            </div>
+            <div class="header-actions" style="display: flex; align-items: center; gap: 15px;">
+                <div class="user-profile-container">
+                    <div class="profile-trigger" onclick="toggleProfileMenu()">
+                        <i class="fas fa-user-circle"></i>
+                        <span class="profile-text">Profilim</span>
+                    </div>
+                    <!-- Profile Dropdown -->
+                    <div class="profile-menu" id="profileDropdown">
+                        <div class="menu-header">
+                            <span id="menuUserName">Kullanıcı</span>
+                        </div>
+                        <ul class="menu-list">
+                            <li><a href="magazam.html"><i class="fas fa-store"></i> Mağazam</a></li>
+                            <li><a href="#"><i class="fas fa-cog"></i> Ayarlar</a></li>
+                            <li><a href="siparis.html"><i class="fas fa-shopping-bag"></i> Siparişlerim</a></li>
+                            <li><a href="profil.html"><i class="fas fa-user-edit"></i> Profilimi Düzenle</a></li>
+                            <li style="border-top: 1px solid #eee; margin-top: 5px;"><a href="kullanici-giris.html"
+                                    onclick="localStorage.removeItem('currentUser');" style="color: #e74c3c;"><i
+                                        class="fas fa-sign-out-alt" style="color: #e74c3c;"></i> Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation & Search -->
+        <div class="nav-bar">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Ürün veya kategori ara...">
+            </div>
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="window.location.href='magaza.html'">
+                    <i class="fas fa-store"></i> Mağaza Oluştur
+                </button>
+                <button class="nav-btn" onclick="window.location.href='magaza-giris-hesap.html'">
+                    <i class="fas fa-store-alt"></i> Mağazam
+                </button>
+                <button class="nav-btn" onclick="window.location.href='siparis.html'">
+                    <i class="fas fa-shopping-basket"></i> Sepetim
+                </button>
+                <button class="nav-btn" onclick="window.location.href='favoriler.html'">
+                    <i class="fas fa-heart"></i> Favoriler
+                </button>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories">
+            <button class="category-pill active" data-category="tumü">Tümü</button>
+            
+            <!-- Kategori Dropdown -->
+            <div class="category-dropdown">
+                <button class="category-toggle">
+                    <i class="fas fa-list"></i> Kategori
+                </button>
+                <div class="category-menu">
+                    <button class="category-menu-item" data-category="kıyafet">Kıyafet</button>
+                    <button class="category-menu-item" data-category="pantolon">Pantolon</button>
+                    <button class="category-menu-item" data-category="aksesuar">Aksesuar</button>
+                    <button class="category-menu-item" data-category="canta">Çanta</button>
+                    <button class="category-menu-item" data-category="cocuk">Çocuk</button>
+                    <button class="category-menu-item" data-category="elbise">Elbise</button>
+                    <button class="category-menu-item" data-category="etek">Etek</button>
+                    <button class="category-menu-item" data-category="seramik">Seramik</button>
+                    <button class="category-menu-item" data-category="tesettür">Tesettür</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero Section (Enhancement) -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Doğal ve El Emeği</h2>
+                <p>En özel tasarımlar, üreticiden kapınıza.</p>
+                <button class="nav-btn" style="background-color: var(--text-dark); color: white;">Keşfetmeye
+                    Başla</button>
+            </div>
+        </section>
+
+        <!-- Product Grid -->
+        <section class="products-grid">
+            <!-- JavaScript ile dinamik olarak yüklenecek -->
+        </section>
+        </section>
+    </div>
+
+    <!-- Scripts for minimal interactivity -->
+    <script>
+        // Tüm kategorideki resim dosyaları
+        const imageFiles = {
+            'kıyafet': ['kıyafet1.jpeg', 'kıyafet2.jpeg', 'kıyafet3.jpeg', 'kıyafet4.jpeg', 'kıyafet5.jpeg', 'kıyafet6.jpeg', 'kıyafet7.jpeg', 'kıyafet8.jpeg', 'kıyafet9.jpeg', 'kıyafet10.jpeg', 'kıyafet11.jpeg', 'kıyafet12.jpeg', 'kıyafet13.jpeg', 'kıyafet14.jpeg', 'kıyafet15.jpeg', 'kıyafet16.jpeg', 'kıyafet17.jpeg', 'kıyafet18.jpeg', 'kıyafet19.jpeg', 'kıyafet20.jpeg', 'kıyafet21.jpeg'],
+            'pantolon': ['pantolon1.jpeg', 'pantolon2.jpeg', 'pantolon3.jpeg', 'pantolon4.jpeg', 'pantolon5.jpeg'],
+            'aksesuar': ['aksesuar1.jpg', 'aksesuar2.jpg', 'aksesuar3.jpg'],
+            'canta': ['canta1.jpg', 'canta2.jpg', 'canta3.jpg'],
+            'cocuk': ['cocuk1.jpeg', 'cocuk2.jpeg', 'cocuk3.jpeg', 'cocuk4.jpeg', 'cocuk5.jpeg', 'cocuk6.jpeg', 'cocuk7.jpeg', 'cocuk8.jpeg', 'cocuk9.jpeg', 'cocuk10.jpeg', 'cocuk11.jpeg', 'cocuk12.jpeg', 'cocuk13.jpeg', 'cocuk14.jpeg', 'cocuk15.jpeg', 'cocuk16.jpeg', 'cocuk17.jpeg'],
+            'elbise': ['elbise1.jpeg', 'elbise2.jpeg', 'elbise3.jpeg', 'elbise4.jpeg', 'elbise5.jpeg', 'elbise6.jpeg', 'elbise7.jpeg', 'elbise8.jpeg', 'elbise9.jpeg'],
+            'etek': ['etek1.jpeg', 'etek2.jpeg', 'etek3.jpeg'],
+            'seramik': ['seramik1.jpg', 'seramik2.jpg', 'seramik3.jpg', 'seramik4.jpg', 'seramik5.jpg', 'seramik6.jpg'],
+            'tesettür': ['tesettür1.jpeg', 'tesettür2.jpeg', 'tesettür3.jpeg', 'tesettür4.jpeg', 'tesettür5.jpeg', 'tesettür6.jpeg', 'tesettür7.jpeg', 'tesettür8.jpeg', 'tesettür9.jpeg', 'tesettür10.jpeg', 'tesettür11.jpeg', 'tesettür12.jpeg']
+        };
+
+        // Ürün isimlerini oluştur - kategoriye göre
+        function getProductName(filename) {
+            // Kategoriye göre ürün isimleri
+            const productNames = {
+                // Kıyafet - Detaylı isimler
+                'kıyafet1': 'Kaplumbağa Baskılı Tişört',
+                'kıyafet2': 'Çiçek Baskılı Bluz',
+                'kıyafet3': 'Kurdele Baskılı Tişört',
+                'kıyafet4': 'Çiçek Baskılı Tişört',
+                'kıyafet5': 'Çilek Baskılı Sweatshirt',
+                'kıyafet6': 'Çilek Baskılı Sweatshirt',
+                'kıyafet7': 'Kiraz Baskılı Tişört',
+                'kıyafet8': 'Çiçek Baskılı Tişört',
+                'kıyafet9': 'Kurdele Baskılı Tişört',
+                'kıyafet10': 'Örgü Hırka',
+                'kıyafet11': 'Örgü Kazak',
+                'kıyafet12': 'Örgü Kazak',
+                'kıyafet13': 'Örgü Kazak',
+                'kıyafet14': 'Renkli Kurdele Baskılı Tişört',
+                'kıyafet15': 'Yandan Bağlamalı Hırka',
+                'kıyafet16': 'Önden Bağlamalı Hırka',
+                'kıyafet17': 'Önden Bağlamalı Hırka',
+                'kıyafet18': 'Yandan Bağlamalı Hırka',
+                'kıyafet19': 'Örgü Kazak',
+                'kıyafet20': 'Önden Bağlamalı Yelek',
+                'kıyafet21': 'Önden Bağlamalı Bluz',
+                
+                // Pantolon - Detaylı isimler
+                'pantolon1': 'Açık Mavi Wide Leg Pantolon',
+                'pantolon2': 'Siyah Wide Leg Pantolon',
+                'pantolon3': 'Gri Kumaş Pantolon',
+                'pantolon4': 'Kahverengi Kumaş Pantolon',
+                'pantolon5': 'Kurdele İşlemeli Mavi Wide Leg Pantolon',
+                
+                // Aksesuar - Detaylı isimler
+                'aksesuar1': 'Deniz Kabuğu Desenli Kolye',
+                'aksesuar2': 'Çiçek İşlemeli Takı Seti',
+                'aksesuar3': 'Gül Motifli Buket',
+                
+                // Çanta - Detaylı isimler
+                'canta1': 'Kurdele Desenli Laptop Çantası',
+                'canta2': 'Nakış İşlemeli Omuz Çantası',
+                'canta3': 'Kırmızı Desenli Tote Çanta',
+                
+                // Çocuk - Detaylı isimler
+                'cocuk1': 'Yeşil Şortlu Takım',
+                'cocuk2': 'Mavi Şortlu Takım',
+                'cocuk3': 'Bej Renkli Sırıf Kol Takım',
+                'cocuk4': 'Kahrevengi Şortlu Takım',
+                'cocuk5': 'Mavi Çiçek Desenli Takım',
+                'cocuk6': 'Erkek Çocuk Şortlu Takım',
+                'cocuk7': 'Sarı Çocuk Takımı',
+                'cocuk8': 'Pembe Pijama Takımı',
+                'cocuk9': 'Kırmızı Kalp Baskılı Takım',
+                'cocuk10': 'Erkek Çocuk Pijama Takımı',
+                'cocuk11': 'Erkek Çocuk Pijama Takımı',
+                'cocuk12': 'Kız Çocuk Pijama Takımı',
+                'cocuk13': 'Erkek Çocuk Şortlu Takım',
+                'cocuk14': 'Erkek Çocuk Şortlu Takım',
+                'cocuk15': 'Erkek Çocuk Şortlu Takım',
+                'cocuk16': 'Çizgili Gömlek Takımı',
+                'cocuk17': 'Erkek Çocuk Şortlu Takım',
+                
+                // Elbise - Detaylı isimler
+                'elbise1': 'Bağlamalı Mavi Mini Elbise',
+                'elbise2': 'Göğüs Detaylı Mini Elbise',
+                'elbise3': 'Mavi Desenli Mini Elbise',
+                'elbise4': 'Çiçek Desenli Mini Elbise',
+                'elbise5': 'Pudra Rengi Yırtmaçlı Elbise',
+                'elbise6': 'Açık Mavi Yırtmaçlı Elbise',
+                'elbise7': 'Mavi Yırtmaçlı Elbise',
+                'elbise8': 'Kırmızı Korseli Elbise',
+                'elbise9': 'Şeftali Renkli Elbise',
+                
+                // Etek - Detaylı isimler
+                'etek1': 'Kahverengi Etek',
+                'etek2': 'Pileli Mini Etek',
+                'etek3': 'Pileli Mini Etek',
+                
+                // Seramik - Detaylı isimler
+                'seramik1': 'Çiçek Motifli Fincan',
+                'seramik2': 'Mavi Çini Tabak',
+                'seramik3': 'Kedi Tasarımlı Kupa',
+                'seramik4': 'Kedi Figürlü Bardak',
+                'seramik5': 'Limon Desenli Bardak',
+                'seramik6': 'Kelebek Motifli Bardak',
+                
+                // Tesettür - Detaylı isimler
+                'tesettür1': 'İpek Eşarp',
+                'tesettür2': 'İpek Eşarp',
+                'tesettür3': 'İpek Eşarp',
+                'tesettür4': 'Önden Bağlamalı Etekli Takım',
+                'tesettür5': 'Önden Bağlamalı Etekli Takım',
+                'tesettür6': 'Fırfırlı Elbise',
+                'tesettür7': 'Yandan Bağlamalı Etekli Takım',
+                'tesettür8': 'Önden Bağlamalı Takım',
+                'tesettür9': 'Beyaz Uzun Etek',
+                'tesettür10': 'Dantel Yakalı Tunik',
+                'tesettür11': 'Yaka Detaylı Takım',
+                'tesettür12': 'Yandan Bağlamalı Takım'
+            };
+            
+            // Dosya adından kategori ve numarasını çıkart
+            const match = filename.match(/^([a-zçğıöşüÇĞİÖŞÜ]+)(\d+)/i);
+            if (match) {
+                const key = match[1] + match[2];
+                return productNames[key] || filename;
+            }
+            return filename;
+        }
+
+        // Tüm ürünleri yükle
+        let allProducts = [];
+
+        function loadAllProducts() {
+            allProducts = [];
+            let id = 1;
+
+            for (let category in imageFiles) {
+                imageFiles[category].forEach(filename => {
+                    allProducts.push({
+                        id: 'prod_' + id,
+                        name: getProductName(filename),
+                        price: Math.floor(Math.random() * 500) + 150,
+                        category: category,
+                        image: 'images/' + filename,
+                        filename: filename
+                    });
+                    id++;
+                });
+            }
+
+            shuffleArray(allProducts);
+            return allProducts;
+        }
+
+        // Dizi karıştırma fonksiyonu
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Ürünleri göster
+        function displayProducts(productsToShow) {
+            const productsGrid = document.querySelector('.products-grid');
+            productsGrid.innerHTML = '';
+
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.dataset.id = product.id;
+                productCard.dataset.category = product.category;
+                productCard.dataset.title = product.name;
+                productCard.dataset.price = product.price + ' TL';
+                productCard.dataset.image = product.image;
+
+                productCard.innerHTML = `
+                    <button class="favorite-btn" onclick="addFavorite(event, '${product.id}', '${product.name}', '${product.price}', '${product.image}')">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p class="product-price">${product.price} TL</p>
+                        <div style="display:flex; gap:8px; margin-top:8px;">
+                            <button class="add-to-cart" onclick="addToCart(event, '${product.id}', '${product.name}', '${product.price}', '${product.image}')">Sepete Ekle</button>
+                            ${product.ownerEmail ? `<button class="buy-now" onclick="buyProduct('${product.id}')">Satın Al</button>` : ''}
+                        </div>
+                    </div>
+                `;
+
+                productsGrid.appendChild(productCard);
+            });
+
+            setupProfileMenu();
+        }
+
+        // Combine stored products (from `urun.html`) with demo products
+        function getCombinedProducts() {
+            const stored = JSON.parse(localStorage.getItem('products') || '[]');
+            const availableStored = Array.isArray(stored) ? stored.filter(p => !p.sold) : [];
+            const demo = Array.isArray(allProducts) ? allProducts.filter(p => !p.ownerEmail) : [];
+            return [...availableStored, ...demo];
+        }
+
+        // Purchase flow for products created by sellers (stored in localStorage 'products')
+        function buyProduct(productId) {
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            const productIndex = products.findIndex(p => p.id === productId);
+            if (productIndex === -1) {
+                alert('Bu ürün şu anda satın alınamaz.');
+                return;
+            }
+            const product = products[productIndex];
+            if (product.sold) {
+                alert('Üzgünüz, bu ürün zaten satıldı.');
+                return;
+            }
+
+            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            if (!currentUser || !currentUser.email) {
+                if (!confirm('Satın almak için giriş yapmalısınız. Giriş sayfasına gitmek istiyor musunuz?')) return;
+                window.location.href = 'kullanici-giris.html';
+                return;
+            }
+
+            if (!confirm(`${product.name} ürününü ${product.price} TL karşılığında satın almak istediğinize emin misiniz?`)) return;
+
+            // Create order
+            const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+            const order = {
+                id: 'order_' + Math.random().toString(36).substr(2, 9),
+                productId: product.id,
+                productName: product.name,
+                price: Number(product.price),
+                buyerName: (currentUser.firstName ? currentUser.firstName + ' ' + (currentUser.lastName||'') : (currentUser.name || currentUser.email)),
+                buyerEmail: currentUser.email,
+                sellerEmail: product.ownerEmail || '',
+                date: new Date().toISOString()
+            };
+            orders.push(order);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            // Mark product sold
+            products[productIndex].sold = true;
+            localStorage.setItem('products', JSON.stringify(products));
+
+            // Credit seller balance
+            if (product.ownerEmail) {
+                const balances = JSON.parse(localStorage.getItem('balances') || '{}');
+                balances[product.ownerEmail] = (balances[product.ownerEmail] || 0) + Number(product.price);
+                localStorage.setItem('balances', JSON.stringify(balances));
+
+                // Notification for seller
+                const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+                notifications.push({ sellerEmail: product.ownerEmail, productName: product.name, buyerName: order.buyerName, date: order.date });
+                localStorage.setItem('notifications', JSON.stringify(notifications));
+            }
+
+            // Admin activity
+            const adminActivities = JSON.parse(localStorage.getItem('adminActivities') || '[]');
+            adminActivities.push({ type: 'sale', productId: product.id, productName: product.name, sellerEmail: product.ownerEmail || '', buyerEmail: currentUser.email, amount: Number(product.price), date: order.date });
+            localStorage.setItem('adminActivities', JSON.stringify(adminActivities));
+
+            // Signal latest sale for other tabs
+            localStorage.setItem('latestSale', JSON.stringify({ sellerEmail: product.ownerEmail || '', productName: product.name, amount: Number(product.price), date: order.date }));
+
+            alert('Satın alma başarılı! Siparişiniz kaydedildi.');
+
+            // Refresh visible products
+            displayProducts(getCombinedProducts());
+        }
+
+        // Favoriye ekleme
+        function addFavorite(event, id, name, price, image) {
+            event.preventDefault();
+            
+            const product = {
+                id: id,
+                title: name,
+                price: price,
+                image: image
+            };
+
+            let favorites = JSON.parse(localStorage.getItem('veloraFavorites') || '[]');
+            
+            if (!favorites.some(f => f.id === product.id)) {
+                favorites.push(product);
+                localStorage.setItem('veloraFavorites', JSON.stringify(favorites));
+                
+                event.target.closest('.favorite-btn').classList.add('active');
+                event.target.closest('.favorite-btn').style.color = '#e91e63';
+                // also increment productFavorites counter used by sellers
+                try {
+                    const productFavorites = JSON.parse(localStorage.getItem('productFavorites') || '{}');
+                    productFavorites[product.id] = productFavorites[product.id] || { count: 0 };
+                    productFavorites[product.id].count = (productFavorites[product.id].count || 0) + 1;
+                    localStorage.setItem('productFavorites', JSON.stringify(productFavorites));
+                } catch (e) {}
+
+                alert('❤️ Favorilere eklendi!');
+            } else {
+                alert('⚠️ Bu ürün zaten favorilerinizde!');
+            }
+        }
+
+        // Sepete ekleme
+        function addToCart(event, id, name, price, image) {
+            event.preventDefault();
+            
+            const product = {
+                id: id,
+                title: name,
+                price: price,
+                image: image,
+                quantity: 1
+            };
+
+            let cart = JSON.parse(localStorage.getItem('veloraCart') || '[]');
+            const existingProductIndex = cart.findIndex(p => p.id === product.id);
+
+            if (existingProductIndex > -1) {
+                cart[existingProductIndex].quantity++;
+            } else {
+                cart.push(product);
+            }
+
+            localStorage.setItem('veloraCart', JSON.stringify(cart));
+
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Sepete Eklendi';
+            btn.style.backgroundColor = '#4CAF50';
+            btn.style.color = 'white';
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.backgroundColor = '';
+                btn.style.color = '';
+            }, 2000);
+        }
+
+        // Kategori filtreleme
+        function setupCategoryFilters() {
+            // Tümü butonu
+            document.querySelector('[data-category="tumü"]').addEventListener('click', function() {
+                document.querySelectorAll('.category-pill, .category-menu-item').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                closeCategoryMenu();
+
+                let allShuffled = [...getCombinedProducts()];
+                shuffleArray(allShuffled);
+                displayProducts(allShuffled);
+                const heroSection = document.querySelector('.hero');
+                if (heroSection) {
+                    heroSection.style.display = 'block';
+                }
+            });
+
+            // Dropdown menü itemleri
+            document.querySelectorAll('.category-menu-item').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    document.querySelectorAll('.category-pill, .category-menu-item').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    closeCategoryMenu();
+
+                    const category = this.dataset.category;
+                    const filtered = getCombinedProducts().filter(p => p.category === category);
+                    displayProducts(filtered);
+                    
+                    const heroSection = document.querySelector('.hero');
+                    if (heroSection) {
+                        heroSection.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Kategori dropdown menüsünü aç/kapat
+        function setupCategoryDropdown() {
+            const toggleBtn = document.querySelector('.category-toggle');
+            const menu = document.querySelector('.category-menu');
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    menu.classList.toggle('active');
+                });
+            }
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.category-dropdown')) {
+                    menu.classList.remove('active');
+                }
+            });
+        }
+
+        function closeCategoryMenu() {
+            const menu = document.querySelector('.category-menu');
+            if (menu) {
+                menu.classList.remove('active');
+            }
+        }
+
+        // Sayfa yüklendiğinde
+        document.addEventListener('DOMContentLoaded', () => {
+            // Tüm demo ürünleri yükle
+            loadAllProducts();
+
+            // Birleştirilmiş ürün listesini al ve göster (satılmışlar filtrelenir)
+            const combined = getCombinedProducts();
+            displayProducts(combined);
+
+            // Hero'yu göster (Tümü kategorisi için)
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.style.display = 'block';
+            }
+
+            // Kategori filtreleri kur
+            setupCategoryFilters();
+
+            // Dropdown menüsü kur
+            setupCategoryDropdown();
+
+            // Profil menüsü kur
+            setupProfileMenu();
+        });
+
+        function setupProfileMenu() {
+            // Profile Menu Toggling
+            window.toggleProfileMenu = function () {
+                const menu = document.getElementById('profileDropdown');
+                if (menu) menu.classList.toggle('active');
+            };
+
+            document.addEventListener('click', function (event) {
+                const container = document.querySelector('.user-profile-container');
+                const menu = document.getElementById('profileDropdown');
+                if (container && menu && !container.contains(event.target)) {
+                    menu.classList.remove('active');
+                }
+            });
+
+            // Display user name
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser && currentUser.firstName) {
+                const menuUserName = document.getElementById('menuUserName');
+                if (menuUserName) menuUserName.textContent = currentUser.firstName + ' ' + currentUser.lastName;
+            }
+        }
+    </script>
+</body>
+
+</html>
